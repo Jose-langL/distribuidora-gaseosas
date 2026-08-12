@@ -50,3 +50,39 @@ END//
 DELIMITER ; 
 
 SELECT fn_calcular_total_con_iva(1);
+
+-- Verificacion Stock 
+DELIMITER // 
+CREATE FUNCTION fn_validar_stock (p_id_detalle INT)
+RETURNS VARCHAR(100)
+DETERMINISTIC 
+BEGIN
+	DECLARE v_stock_actual INT;
+    DECLARE v_cantidad_pedida INT;
+	DECLARE v_mensaje VARCHAR(100);
+    
+    IF NOT EXISTS (
+		SELECT 1 
+        FROM Detalles_pedidos
+        WHERE id_detalle = p_id_detalle 
+	) THEN 
+		SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El detalle del pedido solicitado no existe';
+	END IF; 
+    
+	SELECT P.stock_actual, DP.cantidad
+		INTO v_stock_actual, v_cantidad_pedida
+		FROM Productos P 
+        INNER JOIN Detalles_pedidos DP ON P.id = DP.id_producto
+        WHERE DP.id_detalle = p_id_detalle;
+        
+	IF v_stock_actual >= v_cantidad_pedida THEN 
+		SET v_mensaje = 'Hay suficiente stock para hacer el envio';
+    ELSE
+		SET v_mensaje = 'Stock insuficiente';	
+    END IF;
+    
+	RETURN v_mensaje;
+END// 
+DELIMITER ; 
+
