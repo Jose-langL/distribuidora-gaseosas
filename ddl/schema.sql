@@ -73,3 +73,11 @@ CREATE TABLE Detalles_pedidos(
     FOREIGN KEY (id_pedido) REFERENCES Pedidos(id),
     FOREIGN KEY (id_producto) REFERENCES Productos(id)
 );
+
+CREATE TABLE auditoria_precios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    precio_anterior DECIMAL(4,2),
+    precio_nuevo DECIMAL(4,2),
+    fecha_cambio DATETIME
+);
