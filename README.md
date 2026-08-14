@@ -6,6 +6,9 @@ Cuenta con 8 tablas relacionadas, y varios procesos automáticos que facilitan e
 
 La carpeta `dql` contiene los scripts de consultas, vistas, funciones, triggers, eventos y usuarios.
 
+## Modelo Entidad Relacion
+![Modelo-entidad-racional](./evidencias/modelo_entidad.png)
+
 ## Funciones
 - **`fn_calcular_sub_total`** — Calcula el subtotal de un producto dentro de un pedido.
 - **`fn_calcular_total_con_iva`** — Calcula el total de un pedido completo, incluyendo el IVA.
