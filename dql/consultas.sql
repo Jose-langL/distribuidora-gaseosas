@@ -1,26 +1,31 @@
--- connsultas
-SELECT * FROM Categorias;
 /*
------------------
-Consulta 1
------------------
+------------------------------------------------------------
+                        CONSULTA 1
+Consultar los productos con stock por debajo del mínimo.
+------------------------------------------------------------
 */
+
 SELECT
     P.nombre, P.stock_actual, P.stock_minimo
     FROM Productos P
     WHERE P.stock_actual <= P.stock_minimo;
+
 /*
------------------
-Consulta 2
------------------
+------------------------------------------------------------
+                        CONSULTA 2
+Consultar los pedidos realizados entre dos fechas (BETWEEN)
+------------------------------------------------------------
 */
+
 SELECT codigo_pedido
     FROM Pedidos
     WHERE fecha BETWEEN '2025-05-01' AND '2025-05-31';
+
 /*
------------------
-Consulta 3
------------------
+------------------------------------------------------------
+                        CONSULTA 3
+Listar los productos más vendidos (con JOIN y GROUP BY)
+------------------------------------------------------------
 */
 SELECT
     P.id AS id_producto,
@@ -32,10 +37,12 @@ SELECT
     ORDER BY total_vendido DESC;
 
 /*
------------------
-Consulta 4
------------------
+------------------------------------------------------------
+                        CONSULTA 4
+Mostrar clientes y la cantidad de pedidos realizados
+------------------------------------------------------------
 */
+
 SELECT
         C.id AS id_cliente,
         CONCAT(C.nombre, ' ', C.apellido) AS Cliente,
@@ -44,21 +51,24 @@ SELECT
     INNER JOIN  Clientes C ON P.id_cliente = C.id
     GROUP BY C.id, C.Nombre, C.apellido ;
 
-
-/* 
------------------
-Consulta 5
------------------
+/*
+------------------------------------------------------------
+                        CONSULTA 5
+Buscar clientes por nombre parcial usando LIKE
+------------------------------------------------------------
 */
+
 SELECT *
     FROM Clientes
     WHERE nombre LIKE 'A%';
   
 /*
------------------
-Consulta 6
------------------
+------------------------------------------------------------
+                        CONSULTA 6
+Consultar productos de ciertas categorías usando IN
+------------------------------------------------------------
 */
+
 SELECT
         P.nombre AS producto,
         C.categoria AS Categoria,
@@ -66,11 +76,14 @@ SELECT
     FROM Productos P
     INNER JOIN Categorias C ON P.id_categoria = C.id
     WHERE C.categoria IN ('Gaseosa', 'Jugo');
+
 /*
------------------
-Consulta 7
------------------
+------------------------------------------------------------
+                        CONSULTA 7
+Mostrar el cliente con mayor número de pedidos (subconsulta)
+------------------------------------------------------------
 */
+
 SELECT
     CONCAT(C.nombre, ' ', C.apellido) AS Cliente,
     COUNT(P.id) AS Total_pedidos
@@ -87,10 +100,12 @@ SELECT
 
 
 /*
------------------
-Consulta 8
------------------
+------------------------------------------------------------
+                        CONSULTA 8
+Consultar pedidos y sus totales agrupados por sede
+------------------------------------------------------------
 */
+
 SELECT
         S.id AS id_sede,
         S.nombre AS sede,

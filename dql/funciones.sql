@@ -1,3 +1,10 @@
+/*
+------------------------------------------------------------
+								FUNCION 1
+	Calcular el subtotal de un pedido dado su id_detalle.
+------------------------------------------------------------
+*/
+
 DELIMITER // 
 CREATE FUNCTION fn_calcular_sub_total(id INT)
 RETURNS DECIMAL(5,2)
@@ -22,7 +29,12 @@ BEGIN
 END// 
 DELIMITER ; 
 
--- Calcular total con iva 
+/*
+------------------------------------------------------------
+								FUNCION 2
+	Calcular el total de un pedido dado su id_pedido, incluyendo IVA.
+------------------------------------------------------------
+*/
 
 DELIMITER // 
 CREATE FUNCTION fn_calcular_total_con_iva(p_id_pedido INT)
@@ -51,7 +63,13 @@ DELIMITER ;
 
 SELECT fn_calcular_total_con_iva(1);
 
--- Verificacion Stock 
+/*
+------------------------------------------------------------
+								FUNCION 3
+	Validar el stock de un producto antes de hacer un pedido.
+------------------------------------------------------------
+*/
+
 DELIMITER // 
 CREATE FUNCTION fn_validar_stock (p_id_detalle INT)
 RETURNS VARCHAR(100)

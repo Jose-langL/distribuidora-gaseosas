@@ -1,3 +1,10 @@
+/*
+------------------------------------------------------------
+                        USUARIOS
+    Crear usuarios y asignar permisos en la base de datos
+------------------------------------------------------------
+*/
+
 CREATE USER 'Administrador'@'localhost'  IDENTIFIED BY 'Admin123';
 CREATE USER 'GerenteGT'@'localhost'  IDENTIFIED BY 'GerenteGT123';
 CREATE USER 'Clinte_Edwin'@'localhost' IDENTIFIED BY 'Cliente123!';

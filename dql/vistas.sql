@@ -1,4 +1,10 @@
--- Vista resumen de pedidos 
+/*
+------------------------------------------------------------
+						VISTA 1
+	            resumen de pedidos por sede
+------------------------------------------------------------
+*/
+
 CREATE VIEW vw_resumen_pedidos_por_sede AS
 	SELECT 
 		S.id AS id_sede,
@@ -10,13 +16,27 @@ CREATE VIEW vw_resumen_pedidos_por_sede AS
     INNER JOIN Detalles_pedidos DP ON DP.id_pedido = P.id
     GROUP BY S.id, S.nombre;
 
--- STOCK BAJO 
+/*
+------------------------------------------------------------
+						VISTA 2
+	            productos con stock bajo
+------------------------------------------------------------
+*/
+
 CREATE VIEW vw_productos_bajo_stock AS 
 	SELECT 
 		P.nombre, P.stock_actual, P.stock_minimo
     FROM Productos P 
     WHERE P.stock_actual <= P.stock_minimo;
 SELECT * FROM vw_productos_bajo_stock;
+
+/*
+------------------------------------------------------------
+						Vista 3
+                clientes activos con sus pedidos
+------------------------------------------------------------
+*/
+
 
 CREATE VIEW vw_clientes_activos AS
 	SELECT 
