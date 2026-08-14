@@ -61,3 +61,10 @@ INSERT INTO Detalles_pedidos (id_detalle, id_pedido, id_producto, cantidad, prec
     (7, 7, 7, 11, 9.34),
     (8, 8, 6, 22, 12.72),
     (9, 9, 2, 21, 10.11);
+
+INSERT INTO Productos (id, nombre, id_categoria, id_volumen_ml, precio, stock_actual, stock_minimo) VALUES
+    (8, 'Coca-Cola', 1, 1, 6.50, 20, 30),
+    (9, 'Del Valle', 3, 3, 11.20, 15, 20),
+    (10, 'Nestea', 2, 2, 13.75, 10, 25),
+    (11, 'Monster', 4, 4, 10.15, 5, 15),
+    (12, 'Gatorade', 3, 4, 9.60, 12, 12);
