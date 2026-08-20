@@ -7,10 +7,10 @@
 
 DELIMITER // 
 CREATE FUNCTION fn_calcular_sub_total(id INT)
-RETURNS DECIMAL(5,2)
+RETURNS DECIMAL(10,2)
 DETERMINISTIC
 BEGIN
-    DECLARE Sub_total DECIMAL (5,2);
+    DECLARE Sub_total DECIMAL (10,2);
 	-- mensaje por si no existe el pedido 
 	IF NOT EXISTS (
 		SELECT 1
@@ -38,10 +38,10 @@ DELIMITER ;
 
 DELIMITER // 
 CREATE FUNCTION fn_calcular_total_con_iva(p_id_pedido INT)
-RETURNS DECIMAL(5,2)
+RETURNS DECIMAL(10,2)
 DETERMINISTIC
 BEGIN 
-	DECLARE total_iva DECIMAL(5,2);
+	DECLARE total_iva DECIMAL(10,2);
 	IF NOT EXISTS (
 		SELECT 1
         FROM Detalles_pedidos

@@ -84,19 +84,14 @@ Mostrar el cliente con mayor número de pedidos (subconsulta)
 ------------------------------------------------------------
 */
 
-SELECT
+SELECT 
     CONCAT(C.nombre, ' ', C.apellido) AS Cliente,
     COUNT(P.id) AS Total_pedidos
-    FROM Clientes C
-    INNER JOIN Pedidos P ON P.id_cliente = C.id
-    GROUP BY C.id, C.nombre, C.apellido
-    HAVING COUNT(P.id) = (
-    SELECT MAX(cnt) FROM (
-        SELECT COUNT(id) AS cnt
-        FROM Pedidos
-        GROUP BY id_cliente
-    ) AS conteos
-);
+FROM Clientes C
+INNER JOIN Pedidos P ON P.id_cliente = C.id
+GROUP BY C.id, C.nombre, C.apellido
+ORDER BY Total_pedidos DESC
+LIMIT 1;
 
 
 /*
